@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "integrateur-bf4c5"
+  },
+  "targets": {
+    "integrateur-bf4c5": {
+      "hosting": {
+        "clientMenuCinema": [
+          "integrateur-bf4c5"
+        ]
+      }
+    }
+  }
+}

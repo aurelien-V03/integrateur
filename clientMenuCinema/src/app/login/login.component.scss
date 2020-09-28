@@ -1,0 +1,33 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.photo{
+  width: 50px;
+  height: 50px;
+}
+
+// attributs du profil (nom, email) en gras
+.attributProfil{
+  font-weight: bold;
+}
+table{
+  border: double;
+  border: 2px greenyellow solid;
+  width: 100%;
+}
+.panier{
+  float:right;
+  margin: 10px;
+}
+.connexion{
+  margin: 10px;
+}
+#commander{
+  float: right;
+}
+.btn-primary
+{
+  margin: 5px;
+} 
+.titre_panier{
+  text-align: center;
+}

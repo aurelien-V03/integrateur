@@ -1,0 +1,35 @@
+<table>
+  <tr>
+    <td>
+      <div class="connexion">
+        <!-- SI UTILISATEUR CONNECTE -->
+        <img *ngIf="estConnecter" [src]="getProfilPhotoPath()" class="photo" />
+        <div *ngIf="estConnecter"><span class="attributProfil">Nom Utilisateur: </span>{{nomUser}}</div>
+        <div *ngIf="estConnecter"><span class="attributProfil">Email:</span> {{email}}</div>
+        <button type="button" class="btn btn-primary" (click)="loginGoogle()" [hidden]="estConnecter">Login with
+          Google</button>
+        <button type="button" class="btn badge-secondary" (click)="logoutGoogle()" [hidden]="!estConnecter">Logout
+          Google</button>
+        <button  class="btn btn-primary" *ngIf="estConnecter" (click)="modifierInfos()">
+          Parametre </button>
+        <!-- SI UTILISATEUR DECONNECTE -->
+        <div class="user" *ngIf="!estConnecter">Aucun utilisateur Connecté</div>
+      </div>
+    </td>
+    <!--le panier du client -->
+    <td class="panier">
+  <tr *ngIf="estConnecter">
+    <th>
+      <div class="titre_panier"> MON PANIER</div>
+    </th>
+  </tr>
+  <div *ngIf="idMenu!==''">
+    <div><span class="attributProfil">Identifiant Menu: </span>{{idMenu}}</div>
+    <div><span class="attributProfil">Titre Film: </span>{{infoFilmsetPlats.film.title}}</div>
+    <button type="button" class="btn btn-primary" (click)="passerCommander()">Passer Commande</button>
+  </div>
+  <div *ngIf="idMenu===''&&estConnecter&&!valider">LE PANIER EST VIDE</div>
+  <button *ngIf="valider" class="btn btn-primary" (click)="voirFacture()">Voir ma facture</button>
+  </td>
+  </tr>
+</table>

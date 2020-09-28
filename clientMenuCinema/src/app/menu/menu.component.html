@@ -1,0 +1,29 @@
+
+<div id="menuDiv"  [ngClass]="{ 'isMenuSelected' : menuSelectionned } " >
+    <p align="center" id="titreMenu">Menus N°{{ getNumero() }}</p>
+    <p align="center" id="titreListePlats">Liste des plats</p>
+
+    <!-- Affichage des plats du menu -->
+    <div *ngFor="let platVar of this.getListePlats()" >
+       <p align="center" id="nomPlat"> {{platVar.nomPlat }}</p>
+       <p id="prix"> Prix : {{platVar.prix }} euros</p>
+       <span>Composition : </span>
+       <span *ngFor="let ingredientVar of platVar.ingredients">
+                {{ingredientVar}}
+       </span>
+    </div>
+    
+    <!-- Affichage des genres de films associes au menu -->
+    <span id="styleGenreTitire">Genres de film :  </span>
+    <span *ngFor="let genreVar of this.menu.listeGenre"> {{genreVar}} </span>
+    
+    <!-- Quantite a choisir -->
+    <select  class="form-control" id="quantity" [(ngModel)]="selectedQuantity" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let number of this.numberQuantity ; let i = index" [value]="number">{{number}}</option>
+    </select>
+
+    <!-- On affiche l'un des 2 boutons-->
+    <button type="button" class="btn btn-primary" *ngIf="this.menuSelectionned == false" (click)="onClickMenu()">ajouter</button>
+    <button type="button" class="btn btn-danger" *ngIf="this.menuSelectionned == true" (click)="onClickMenu()">retirer</button>
+
+</div>

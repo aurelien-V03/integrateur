@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<p:Carte xmlns:p="http://integrateur/carte" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://integrateur/carte platsSchema.xsd">
+     <p:Plats>
+        <p:idPlat>1</p:idPlat>
+        <p:nomPlat>La grenobloise</p:nomPlat>
+        <p:type>Entree</p:type>
+        <p:prix>8</p:prix>
+        <p:photo/>
+        <p:ingredients>
+            <p:ingredient>battavia</p:ingredient>
+            <p:ingredient>noix</p:ingredient>
+            <p:ingredient>tomate</p:ingredient>
+        </p:ingredients>
+    </p:Plats>
+    <p:Plats>
+        <p:idPlat>2</p:idPlat>
+        <p:nomPlat>Petit four</p:nomPlat>
+        <p:type>Entree</p:type>
+        <p:prix>8</p:prix>
+        <p:photo/>
+        <p:ingredients>
+            <p:ingredient>pate brissee</p:ingredient>
+            <p:ingredient>fromage</p:ingredient>
+        </p:ingredients>
+    </p:Plats>        
+    <p:Plats>
+        <p:idPlat>3</p:idPlat>
+        <p:nomPlat>Cassoulet</p:nomPlat>
+        <p:type>Plat</p:type>
+        <p:prix>10</p:prix>
+        <p:photo/>
+        <p:ingredients>
+            <p:ingredient>Haricot</p:ingredient>
+            <p:ingredient>saucisse</p:ingredient>
+        </p:ingredients>
+    </p:Plats> 
+    <p:Plats>
+        <p:idPlat>4</p:idPlat>
+        <p:nomPlat>Hachis Parmantier</p:nomPlat>
+        <p:type>Plat</p:type>
+        <p:prix>10</p:prix>
+        <p:photo/>
+        <p:ingredients>
+            <p:ingredient>pomme de terre</p:ingredient>
+            <p:ingredient>boeuf</p:ingredient>
+            <p:ingredient>tomate</p:ingredient>
+        </p:ingredients>
+    </p:Plats>     
+    <p:Plats>
+        <p:idPlat>5</p:idPlat>
+        <p:nomPlat>Crepe chantilly</p:nomPlat>
+        <p:type>Dessert</p:type>
+        <p:prix>5</p:prix>
+        <p:photo/>
+        <p:ingredients>
+            <p:ingredient>Creme fouettee</p:ingredient>
+            <p:ingredient>sucre</p:ingredient>
+        </p:ingredients>
+    </p:Plats>
+    <p:Plats>
+        <p:idPlat>6</p:idPlat>
+        <p:nomPlat>Glace vanille</p:nomPlat>
+        <p:type>Dessert</p:type>
+        <p:prix>5</p:prix>
+        <p:photo/>
+        <p:ingredients>
+            <p:ingredient>Creme fouettee</p:ingredient>
+            <p:ingredient>glace</p:ingredient>
+            <p:ingredient>vanille</p:ingredient>
+        </p:ingredients>
+    </p:Plats>
+    <p:Plats>
+        <p:idPlat>7</p:idPlat>
+        <p:nomPlat>Glace chocolat</p:nomPlat>
+        <p:type>Dessert</p:type>
+        <p:prix>5</p:prix>
+        <p:photo/>
+        <p:ingredients>
+            <p:ingredient>Creme fouettee</p:ingredient>
+            <p:ingredient>glace</p:ingredient>
+            <p:ingredient>chocolat</p:ingredient>
+        </p:ingredients>
+    </p:Plats>
+    <p:Plats>
+        <p:idPlat>8</p:idPlat>
+        <p:nomPlat>Fanta 33cl</p:nomPlat>
+        <p:type>Boisson</p:type>
+        <p:prix>2</p:prix>
+        <p:photo/>
+        <p:ingredients>
+            <p:ingredient>orange</p:ingredient>
+        </p:ingredients>
+    </p:Plats>
+	<p:Plats>
+        <p:idPlat>9</p:idPlat>
+        <p:nomPlat>Coca-cola 33cl</p:nomPlat>
+        <p:type>Boisson</p:type>
+        <p:prix>2</p:prix>
+        <p:photo/>
+        <p:ingredients>
+            <p:ingredient>caramel</p:ingredient>
+        </p:ingredients>
+    </p:Plats>
+    <p:Plats>
+        <p:idPlat>10</p:idPlat>
+        <p:nomPlat>Vin rouge 50cl</p:nomPlat>
+        <p:type>Boisson</p:type>
+        <p:prix>5</p:prix>
+        <p:photo/>
+        <p:ingredients>
+            <p:ingredient>raisin</p:ingredient>
+        </p:ingredients>
+    </p:Plats>
+    <p:Menus>
+        <p:Menu>
+            <p:idMenu>123</p:idMenu>
+            <p:listePlat>
+                <p:idPlat>1</p:idPlat>
+                <p:idPlat>2</p:idPlat>
+                <p:idPlat>8</p:idPlat> 
+            </p:listePlat>
+            <p:listeGenre>
+                <p:genre>Comedie</p:genre>
+            </p:listeGenre>
+        </p:Menu>
+         <p:Menu>
+            <p:idMenu>369</p:idMenu>
+            <p:listePlat>
+                <p:idPlat>3</p:idPlat>
+                <p:idPlat>6</p:idPlat>
+                <p:idPlat>9</p:idPlat> 
+            </p:listePlat>
+            <p:listeGenre>
+                <p:genre>Famille</p:genre>
+            </p:listeGenre>
+        </p:Menu>
+         <p:Menu>
+            <p:idMenu>14610</p:idMenu>
+            <p:listePlat>
+                <p:idPlat>1</p:idPlat>
+                <p:idPlat>4</p:idPlat>
+                <p:idPlat>6</p:idPlat> 
+                <p:idPlat>10</p:idPlat> 
+            </p:listePlat>
+            <p:listeGenre>
+                <p:genre>Romance</p:genre>
+            </p:listeGenre>
+        </p:Menu>
+         <p:Menu>
+            <p:idMenu>14510</p:idMenu>
+            <p:listePlat>
+                <p:idPlat>1</p:idPlat>
+                <p:idPlat>4</p:idPlat>
+                <p:idPlat>5</p:idPlat> 
+                <p:idPlat>10</p:idPlat> 
+            </p:listePlat>
+            <p:listeGenre>
+                <p:genre>Romance</p:genre>
+            </p:listeGenre>
+        </p:Menu>
+    </p:Menus>
+</p:Carte> 

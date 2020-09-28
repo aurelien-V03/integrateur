@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xsd:schema  
+           elementFormDefault="qualified" 
+           targetNamespace="http://integrateur/menu"
+           xmlns ="http://integrateur/menu"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+           
+     <xsd:element name="commandes" type="Commandes"/>
+
+   <xsd:complexType name="Commandes">
+	<xsd:sequence>
+		<xsd:element name="commande" minOccurs="0" maxOccurs="unbounded" type="Commande"/>
+	</xsd:sequence>
+  </xsd:complexType>
+
+    <xsd:complexType name="Commande">
+        <xsd:sequence>
+            <xsd:element name="id"                  type="xsd:string"/> 
+            <xsd:element name="idClient"            type="xsd:string"/>
+            <xsd:element name="idPlats"             type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="idFilms"             type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="date"                type="xsd:string"/>
+            <xsd:element name="adresseLivraison"    type="xsd:string"/>
+            <xsd:element name="prix"                type="xsd:double"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

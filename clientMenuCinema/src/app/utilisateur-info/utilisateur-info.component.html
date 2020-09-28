@@ -1,0 +1,23 @@
+<div class="container">
+    <div id="divBlockInfoClient">
+        <h1 align="center">Modifier vos informations </h1>
+        <label for="newName">Nouveau nom </label>
+        <div *ngIf="isConnecter">
+            <input type="text" class="form-control" id="newName" aria-describedby="nouveau nom"  placeholder="{{this.utilisateur.nom}}">
+            <label for="newPhotoUrl">Nouvelle photo (URL) </label>
+            <input type="text" class="form-control" id="newPhotoUrl" aria-describedby="nouveau nom" placeholder="{{this.utilisateur.photo}}">
+        
+            <label for="newMail">Nouveau mail </label>
+            <input type="text" class="form-control" id="newMail" aria-describedby="nouveau nom" placeholder="{{this.utilisateur.email}}">
+        
+            <label for="newNumber">Nouveau numéro téléphone </label>
+            <input type="text" class="form-control" id="newNumber" aria-describedby="nouveau nom" placeholder="{{this.utilisateur.tel}}">
+        
+            <label for="newAdresse">Nouvelle adresse </label>
+            <input type="text" class="form-control" id="newAdresse" aria-describedby="nouvelle adresse" placeholder="{{this.utilisateur.adresse}}"><br>
+        
+            <button type="button" class="btn btn-info" (click)="modifierInfoClient()">Modifier mes informations</button>  
+        </div>
+        <app-login (envoieDonner)="getDonner($event)" id="cacher"></app-login>
+    </div>
+</div>

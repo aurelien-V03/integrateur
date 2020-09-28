@@ -1,0 +1,25 @@
+<div class="movieBlock"  [ngClass]="{ 'isSelected' : movieIsSelected , 'detail' : showPortal } ">
+    <!-- Poster du film -->
+    <img *ngIf="this.getMoviePosterPath() != undefined" [src]="this.getMoviePosterPath()" alt="imgMovie" class="moviePoster"/>
+    <!-- Quelques informations sur le film-->
+    <table>
+        <tr><td class="titleMovie">Titre :</td><td>{{ getMovieTitle()  }}</td></tr>
+        <tr><td class="titleMovie">Genres : </td><td>{{ getMovieGenre() }}</td></tr>
+        <tr><td class="titleMovie">Année : </td><td> {{ getMovieRelease() }}</td></tr>
+        <tr><td class="titleMovie">Origine : </td><td>{{ getMovieOrigine() }}</td></tr>
+    </table>
+
+    <button *ngIf="this.showPortal != true" (click)="showDetail()">Detail</button>
+
+    <!-- Detail du film-->
+   <div *ngIf="showPortal">
+    <p><span class="titleMovie">Résumé :</span><span>{{this.movie.overview}}</span></p>
+    <p><span class="titleMovie">Film adulte :</span><span>{{this.movie.adult}}</span></p>
+    <p><span class="titleMovie">Budget : </span><span>{{this.getBudget()}}</span></p>
+    <p><span class="titleMovie">Status : </span><span>{{this.movie.status}}</span></p>
+    <p><span class="titleMovie">Revenue : </span><span>{{this.getRevenue()}}</span></p>
+    <button (click)="hideDetai()">fermer le détail</button>
+   </div>
+
+   <button type="button" class="btn btn-success" (click)="selectMovie()">+</button>
+</div>

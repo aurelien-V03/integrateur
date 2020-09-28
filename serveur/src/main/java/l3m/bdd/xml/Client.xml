@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:client xmlns:p="http://integrateur/menu"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://integrateur/menu Client.xsd ">
+	<p:id></p:id>
+	<p:nom></p:nom>
+	<p:photo></p:photo>
+	<p:email></p:email>
+	<p:tel></p:tel>
+	<p:adresse></p:adresse>
+</p:client>

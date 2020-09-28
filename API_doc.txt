@@ -1,0 +1,294 @@
+Voici notre API :
+
+Elle compose en trois grande partie :
+
+/api/client/*
+-> Tout ce qui concerne le client
+
+/api/commande/*
+-> Tout ce qui concerne les commandes
+
+/api/menus
+-> Les menus disponible 
+
+
+Ainsi nous avons comme API :
+
+1  /api/commande/valider
+2  /api/commande/rechercher
+3  /api/commande/modifier
+4  /api/commande/supprimer
+
+5  /api/client/authentification
+6  /api/client/infos
+7  /api/client/modifierInfos
+
+8  /api/menus 
+
+
+Vous trouverz ci-dessous :
+
+
+*******************************************
+ 1-API POUR VALIDER UNE COMMANDE CLIENT
+*******************************************
+
+ /api/commande/valider
+
+parametre =
+{
+	idClient : E
+	idMovie : A,
+	idMenu : B-C%20B-C (%20 correspond a un espace dans l url)
+	livr:D  
+}
+ 
+ A = id du film, 
+ B = id d'un menu, 
+ C = quantite du menu, 
+ D = adresse de livraison
+	  2 CAS : si D = vide alors adresse Client
+			  Sinon c'est D
+ 
+ RECOIT UNE REPONSE EN XML
+(voir xsd de /api/rechercherCommande)
+ 
+ *******************************************
+ 2- API POUR RECHERCHER UNE COMMANDE 
+ *******************************************
+ 
+ /api/commande/rechercher
+
+parametre = 
+{
+   idClient:A,
+   dateCommande:B,   (PEUT ETRE FACULTATIF)
+   ingredient:C      (PEUT ETRE FACULTATIF)
+}
+
+-> Si B et C, les deux filtres ne sont pas renseigner, l'ensemble des commandes concernant le client A est renvoy√© dans ce cas.
+
+RECOIT DU XML :
+ 
+<?xml version="1.0"?>
+<xsd:schema  
+           elementFormDefault="qualified" 
+           targetNamespace="http://integrateur/menu"
+           xmlns ="http://integrateur/menu"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+           
+     <xsd:element name="commandes" type="Commandes"/>
+
+   <xsd:complexType name="Commandes">
+	<xsd:sequence>
+		<xsd:element name="commande" minOccurs="0" maxOccurs="unbounded" type="Commande"/>
+	</xsd:sequence>
+  </xsd:complexType>
+
+    <xsd:complexType name="Commande">
+        <xsd:sequence>
+            <xsd:element name="id"                  type="xsd:string"/> 
+            <xsd:element name="idClient"            type="xsd:string"/>
+            <xsd:element name="idPlats"             type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="idFilms"             type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="date"                type="xsd:string"/>
+            <xsd:element name="adresseLivraison"    type="xsd:string"/>
+            <xsd:element name="prix"                type="xsd:double"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+		
+
+*******************************************
+ 3-API POUR MODIFIER UNE COMMANDE CLIENT
+*******************************************
+
+ /api/commande/modifier
+
+parametre =
+{
+	idCommande : E
+	idMovie : A,            (PEUT ETRE FACULTATIF)
+	idMenu : B/C            (PEUT ETRE FACULTATIF)
+	livr:D             	(PEUT ETRE FACULTATIF)
+}
+ 
+ A = id du film, 
+ B = id d'un menu, 
+ C = quantite du menu, 
+ D = adresse de livraison
+	  2 CAS : si D = vide alors adresse Client
+			  Sinon c'est D
+ E = id de la commande
+
+
+Pour les champs A,B,C et D, seul les valeurs a changer sont presentes dans les parametres
+ 
+ RECOIT UNE REPONSE EN XML AVEC LES NOUVELLES INFOS
+(voir xsd de /api/rechercherCommande)		
+
+
+*******************************************
+ 4-API POUR SUPPRIMER UNE COMMANDE CLIENT
+*******************************************
+
+ /api/commande/supprimer
+
+parametre =
+{
+	idCommande : A
+}
+ 
+RECOIT DU TEXTE:
+		'true'     La suppression a bien ete faite
+		'false'	   Erreur 
+				
+				
+*******************************************				
+5- AUTHENTIFICATION AUPRES DU SERVEUR METIER
+*******************************************
+
+ /api/client/authentification
+
+param = 
+{
+   login: A,
+   nom : B
+}
+
+RECOIT DU TEXTE:
+		'true'     L'utilisateur est logue
+		'inscrit'  L'utilisateur est logue et inscrit
+		'false'	   Erreur 
+
+*******************************************		
+6- API pour recevoir les infos client
+*******************************************
+
+ /api/client/infos
+
+param = 
+{
+   login: A
+}
+
+RECOIT DU XML :
+
+<?xml version="1.0"?>			
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           attributeFormDefault="unqualified" 
+           elementFormDefault="qualified" 
+           targetNamespace="http://integrateur/menu"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="client" type="Client"/> 
+    <xsd:complexType name="Client">
+        <xsd:sequence>
+         <xsd:element name="id"           type="xsd:string"/>
+            <xsd:element name="nom"       type="xsd:string"/>
+            <xsd:element name="photo"      type="xsd:string"/>
+            <xsd:element name="email"     type="xsd:string"/>
+            <xsd:element name="tel"       type="xsd:string"/>
+            <xsd:element name="adresse"   type="xsd:string"/>
+            
+        </xsd:sequence>    
+    </xsd:complexType>
+</xsd:schema>
+
+
+*******************************************		
+7- API pour modifer les infos client
+*******************************************
+
+ /api/client/modifierInfos
+
+param = 
+{
+   idClient:A,
+   nom:B,            (PEUT ETRE FACULTATIF)
+   photo:C           (PEUT ETRE FACULTATIF)
+   email:D           (PEUT ETRE FACULTATIF)
+   tel:E             (PEUT ETRE FACULTATIF)
+   adresse:F         (PEUT ETRE FACULTATIF)
+}
+
+Pour les champs de B a† F, , seul les valeurs a changer sont presentes dans les parametres
+
+RECOIT DU TEXTE:
+		'true'     Les modifications sont bien faite
+		'false'	   Erreur 
+
+		
+*******************************************		
+8 - API pour recuperer les menus
+*******************************************
+
+/api/menus
+
+param = 
+{
+}
+
+RECOIT DU XML :
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema version="1.0"
+            targetNamespace="http://integrateur/carte"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://integrateur/carte"                         elementFormDefault="qualified">
+    
+    <xsd:element name="Carte" type="Carte"></xsd:element>
+    <xsd:complexType name="Carte">
+        <xsd:sequence>
+            <xsd:element name="Plats" type="Plat"
+                         maxOccurs="unbounded" />
+            <xsd:element name="Menus" type="Menus"
+                         maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Plat">
+        <xsd:sequence>
+            <xsd:element name="idPlat" type="xsd:int" />
+            <xsd:element name="nomPlat" type="xsd:string" />
+            <xsd:element name="type" type="TypePlat" />
+            <xsd:element name="prix" type="xsd:double" />
+            <xsd:element name="photo" type="xsd:string" />
+            <xsd:element name="ingredients" type="Ingredients"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Ingredients">
+        <xsd:sequence>
+            <xsd:element name="ingredient" type="xsd:string"
+                         maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="TypePlat">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Entree|Plat|Dessert|Boisson" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="Menus">
+        <xsd:sequence>
+            <xsd:element name="Menu" type="Menu"
+                         maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Menu">
+        <xsd:sequence>
+            <xsd:element name="idMenu" type="xsd:long" />
+            <xsd:element name="listePlat" type="listePlat"/>
+            <xsd:element name="listeGenre" type="listeGenre"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="listePlat">
+        <xsd:sequence>
+            <xsd:element name="idPlat" type="xsd:string"
+                         maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="listeGenre">
+        <xsd:sequence>
+            <xsd:element name="genre" type="xsd:string"
+                         maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

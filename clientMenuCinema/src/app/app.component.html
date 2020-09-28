@@ -1,0 +1,66 @@
+<div id="principale">
+  <h1 align="center" class="titre">MenuCinéma.com 2020</h1>
+  <hr>
+  <app-login class="login" (loginUserEventMitter)="loginUser($event)" [lesParatremets]="urlParmetres" [idMenu]="idMenu"
+    [infoFilmsetPlats]="infoFilmsetPlats"></app-login><br>
+  <button class="button" id="listMoviesButton">Liste des films</button>
+  <button class="button" id="listMenusButton">Liste des Menus</button>
+  <div id="listMovies">
+
+    <!--  FILTRES POUR LES FILMS -->
+    <input type="text" placeholder="Rechercher un film" [(ngModel)]="filterFilms">
+    <button type="button" class="btn btn-info" id="buttonSortPopularity">Trier par popularite</button>
+    <button type="button" class="btn btn-info" id="buttonSortReleaseDate">Trier par annee</button>
+
+    <!-- Affichage des films -->
+    <h2>Liste des films disponibles </h2>
+    <div id="movieSelected" type="text" value="Filtrer"></div>
+    <p id="filmSelected"></p>
+    <app-movie *ngFor="let movieVar of film|filter :filterFilms:'original_title' ; let i = index" [numeroFilm]='i'
+      [movie]='movieVar' (movieComponentSelected)='getMovieSelected($event)'>
+    </app-movie>
+    <br>
+    <button id="displayMoreButton" class="btn btn-primary">Afficher plus de film</button>
+    <button id="commanderButton" class="btn btn-primary">Commander un menu</button>
+  </div>
+
+  <!--Affichage des menus -->
+  <div id="listeMenus">
+    <h2>Liste des menus disponibles</h2>
+    <p>Liste des menus selectionnes : ( <span *ngFor="let menuSelectionned of this.menusSelected">
+        {{ menuSelectionned.idMenu }}</span>
+      ) </p>
+    <app-menu *ngFor="let menuVar of this.menusList" [menu]="menuVar" (menuSelectionnedEvent)="getMenuSelected($event)">
+    </app-menu>
+    <button type="button" id="menusCommander" class="btn btn-primary">Commander un film</button>
+  </div>
+  <div id="ConfirmationCommande" *ngIf="isMenuSelected && isMovieSelected">
+    <button class="btn btn-success" (click)="ajoutPanier()" [disabled]="adresseLivraison===''">AJOUTER DANS MON
+      PANIER</button>
+    <div class="form-group">
+      <label for="livr">Adresse de livraison :</label>
+      <input type="text" class="form-control" id="livr" [(ngModel)]="adresseLivraison"
+        placeholder="Entrer une adresse de livraison">
+    </div>
+  </div>
+  <!-- Affiche ce composant a un utilisateur connecté pour lui permettre de rechercher des commandes -->
+  <app-commande-client *ngIf="this.u != undefined" [user]="this.u"></app-commande-client>
+  <router-outlet></router-outlet>
+  <!--<app-facture></app-facture>-->
+</div>
+<div id="facture">
+  <h1 align="center">FACTURE CLIENT</h1><br />
+  <div class="facture">
+    <div>List des plats :<br />
+      <div *ngFor="let menu of menusSelected" #prixTotal>
+        <div *ngFor="let plat of menu.listePlat">NOM PLAT : {{plat.nomPlat}} PRIX : {{plat.prix}} €</div>
+      </div>
+    </div>
+    <br />
+    <div *ngIf="movieSelected!==undefined">Titre du Film choisi {{movieSelected.title}}</div>
+    <br /><br />
+    <h3 align="center">Bonne journée</h3><br />
+    <h3 align=center class="infos">Merci d'actualiser pour revenir sur le site</h3>
+  </div>
+</div>
+<app-utilisateur-info [user]="this.u"></app-utilisateur-info>

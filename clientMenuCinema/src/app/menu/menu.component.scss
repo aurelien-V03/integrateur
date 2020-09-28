@@ -1,0 +1,48 @@
+// Bloc qui contient tout le corps du menu
+#menuDiv{
+    border: 1px black solid;
+    width: 20%;
+    height: auto;
+    padding: 10px;
+    display: inline-block;
+    overflow: hidden;
+    margin: 10px;
+}
+
+// classe utilisee quand l'utilisateur clique sur un menu 
+.isMenuSelected
+{
+    background-color: moccasin;
+}
+
+// Menu 'Menu N° XXX'
+#titreMenu{
+    font-weight: bold;
+    background-color: greenyellow;
+}
+
+// sous-titre 'Liste des plats'
+#titreListePlats{
+    background-color: lemonchiffon;
+    margin:5px;
+}
+
+#nomPlat{
+    border-bottom: 1px gray solid;
+    font-style: italic;
+}
+
+// On enleve les marges autours des bloc <p>
+p{
+    margin: 0px;
+}
+
+// titre : "genres de film"
+#styleGenreTitire{
+    font-weight: bold;
+}
+
+#quantiteDiv{
+    border-top:1px black solid;
+    padding-top: 40px;
+}

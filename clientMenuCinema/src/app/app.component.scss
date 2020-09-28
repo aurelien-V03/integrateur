@@ -1,0 +1,60 @@
+// Bloc principale pour la liste des films
+#listMovies{
+  border:1px lightgray solid;
+  padding: 50px;
+  margin-top:20px;
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 50%;
+
+  }
+  // Survole d'un bouton
+  .button:hover
+  {
+    border:2px black solid;
+    padding: 13px 30px;
+  }
+  .titre{
+    color: blue;
+  }
+  .container-fluid {
+    padding: 20px;
+    margin: auto;
+    
+  }
+  .btn-info{
+    margin: 5px;
+  }
+
+
+
+  // CSS POUR LES MENUS 
+
+  // Div qui contient la liste de tous les menus
+  #listeMenus{
+    border:1px lightgray solid;
+    padding: 50px;
+    margin-top:20px;
+  }
+
+
+  // ZONE POUR CONFIRMER LA COMMANDE
+  #ConfirmationCommande{
+      margin-top:20px;
+      border: 2px greenyellow solid;
+      padding: 20px;
+      }
+.btn-success{
+  margin: 5px;
+}
+.facture{
+  padding: 25px;
+  text-align: center;
+}

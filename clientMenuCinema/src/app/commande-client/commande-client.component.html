@@ -1,0 +1,38 @@
+<button class="button" id="commandeFindButton" class="rechercheCommandeButton">Rechercher une commande</button>
+
+
+
+<div id="rechercheCommandesBlock" *ngIf="this.displayCommandes">
+    <h3 align="center">Rechercher mes commandes</h3>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <label for="commandeComposition">Composition de votre commande : </label>
+        <input type="text" class="form-control" placeholder="Composition de votre commande (ex : poivron...)"
+            id="commandeComposition" name="commandeComposition" class="form-control" ngModel>
+        <label for="time">Date de votre commande : </label>
+
+        <input type="date" id="start" name="trip-start" class="form-control" value="2018-07-22" min="2020-01-01"
+            max="2022-12-31">
+
+
+        <button type="submit" class="btn btn-primary" id="buttonFindCommande">Rechercher commande</button>
+
+        <!--   Affiche la liste des commandes ici -->
+        <div *ngFor="let commande of this.commandesClient" class="commandeClient">
+            <!-- INFO DE LA COMMANDE -->
+            <p class="titreNumCommande">Numero de commande : {{ commande.numeroCommande }}</p>
+            <p> Numero de client : {{ commande.numeroClient }}</p>
+            <p>Date commande : {{ commande.dateCommande }}</p>
+            <p>Adresse de livraison : {{ commande.adresseLivraison}}
+
+
+                <!-- FILM DE LA COMMANDE -->
+                <p>Film N° {{commande.filmCommande}} </p>
+                <!-- MENUS DE LA COMMANDE-->
+                <p *ngFor="let menu of commande.listeMenusCommandes">
+                    Menu N° {{menu}}
+                </p>
+
+                <p>prix total :  {{ commande.prix }} euros</p>
+        </div>
+    </form>
+</div>

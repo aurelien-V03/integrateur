@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:commandes xmlns:p="http://integrateur/menu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://integrateur/menu Commade.xsd ">
+  <p:commande>
+    <p:id>p:id</p:id>
+    <p:idClient>p:idClient</p:idClient>
+    <p:idPlats>p:idPlats</p:idPlats>
+    <p:idFilms>p:idFilms</p:idFilms>
+    <p:date>p:date</p:date>
+    <p:adresseLivraison>p:adresseLivraison</p:adresseLivraison>
+    <p:prix>0.0</p:prix>
+  </p:commande>
+</p:commandes>
