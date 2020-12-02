@@ -41,7 +41,7 @@
        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
        <maven.compiler.source>1.8</maven.compiler.source>
        <maven.compiler.target>1.8</maven.compiler.target>
-       <jettyVersion>9.4.3.v20170317</jettyVersion>
+       <jettyVersion>9.4.35.v20201120</jettyVersion>
        <jettyServletVersion>9.4.3.v20170317</jettyServletVersion>
    </properties>
 
